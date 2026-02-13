@@ -16,11 +16,19 @@ Para la siguiente gráfica se asumirá que n es la cantidad de vértices, m es l
 Para el diseño de la funciones:
  
 agregarVertice: Se implementó con "tail" para reducir el orden de la función de O(n) a O(1) en el peor caso, Tail cumple la función al ser un marcador al último elemento. De resto la implementación solo crea un nodo nuevo con el vèrtice que se de, y se modifica el tail y el valor del tail para que apunten al nuevo valor.
+
 eliminarVertice: dado que se tienen que ver todos los posibles elementos, el diseño seleccionado revisa los casos posibles, si es de tamaño 0, si es de tamaño 1, si se borra el vértice y si no se borra el vértice, si se tiene que borrar el arco. se trata de no usar "contiene" para minimizar el coste 
+
 conectar: dado que se deben añadir dos elementos en lugar de uno, para simplificar la lógica si se usa "contiene", si efectivamente el grafo contiene desde y hasta, se viaja en un while para encontrar el "desde" y se viaja en otro whila para encontrar el "hasta", si no se encuentra, se añade. Pese a que el modelo usado es menos óptimo que uno que no use contiene, es más legible.
+
 contiene: Se decidió usar un simple bucle while, dado que es una lista enlazada, para buscar el elemento que retorna True si lo encuentra, y si falla todo el while sin encontrar nada, se va a false. 
+
 obtenerArcosSalida: Se modifica el modelo visto en clase para no anidar dos bucles while, en cambio se tienen al mismo nivel. No afecta el orden pero es más legible. Se usa un contiene para iniciar el if por legibilidad.
+
 obtenerArcosEntrada: Similar al modelo visto en clase, viaja por todos los elementos si es que "v" pertenece al grafo, para ver cuantos entran a un vértice v. Similarmente contiene() está por legibilidad, aunque acá al ser O(n+m) afecta menos el orden total. 
+
 tamano: se usa la variable "tamanio" para reducir el orden a O(1), aunque haga menos legible añadir y eliminar, pero al ser intuitivo se deja
+
 subgrafo: Se va por todos los elementos preguntando si está en el conjunto de vértices de "collection", el código trata de solo añadir aquellos que pertenezcan a la intersección de ambos conjuntos. 
+
 Nodo.kt: Para implementar los nodos se hace uso de Nodo.kt que incluye NodoVer para los nodos principales y NodoLad para los lados secundarios.
